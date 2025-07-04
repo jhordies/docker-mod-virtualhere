@@ -34,4 +34,5 @@ jobs:
           push: ${{ github.event_name != 'pull_request' }}
           tags: |
             ghcr.io/${{ github.repository_owner }}/mods:code-server-virtualhere
+            ghcr.io/${{ github.repository_owner }}/mods:code-server-virtualhere:latest
             ghcr.io/${{ github.repository_owner }}/mods:code-server-virtualhere-${{ github.sha }}
