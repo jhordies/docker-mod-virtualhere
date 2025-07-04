@@ -1,0 +1,14 @@
+FROM ghcr.io/linuxserver/baseimage-ubuntu:arm64v8-jammy AS buildstage
+
+# Install VirtualHere USB Client
+RUN apt-get update && \
+    apt-get install -y wget kmod && \
+    mkdir -p /tmp/root/usr/local/bin && \
+    wget https://www.virtualhere.com/sites/default/files/usbclient/vhclientaarch64 -O /tmp/root/usr/local/bin/vhclient && \
+    chmod +x /tmp/root/usr/local/bin/vhclient
+
+# Copy service files
+COPY root/ /tmp/root/
+
+FROM scratch
+COPY --from=buildstage /tmp/root/ /

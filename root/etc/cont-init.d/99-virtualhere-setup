@@ -1,0 +1,25 @@
+#!/usr/bin/with-contenv bash
+
+# Create necessary directories
+mkdir -p /config/virtualhere
+mkdir -p /config/log/virtualhere
+
+# Set permissions
+chown -R abc:abc /config/virtualhere
+chown -R abc:abc /config/log/virtualhere
+
+# Create default config if it doesn't exist
+if [ ! -f /config/virtualhere/config.ini ]; then
+    cat > /config/virtualhere/config.ini << 'EOF'
+# VirtualHere Client Configuration
+# Auto-find servers on local network
+AutoFind=1
+
+# Enable logging
+EnableLogging=1
+LogLevel=2
+EOF
+    chown abc:abc /config/virtualhere/config.ini
+fi
+
+echo "[$(date)] VirtualHere setup complete"

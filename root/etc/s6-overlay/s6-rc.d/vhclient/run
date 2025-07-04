@@ -1,0 +1,10 @@
+#!/usr/bin/with-contenv bash
+
+# Add /usr/local/sbin to PATH for modprobe
+export PATH="$PATH:/usr/local/sbin:/sbin:/usr/sbin"
+
+# Run VirtualHere client as daemon
+/usr/local/bin/vhclient -n -c /config/virtualhere/config.ini
+
+# Sleep forever to keep service running
+sleep infinity

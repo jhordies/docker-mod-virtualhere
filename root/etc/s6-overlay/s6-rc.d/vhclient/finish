@@ -1,0 +1,5 @@
+#!/usr/bin/with-contenv bash
+
+mkdir -p /config/log/virtualhere
+chown -R abc:abc /config/log/virtualhere
+echo "[$(date)] VirtualHere client stopped" >> /config/log/virtualhere/vhclient.log
